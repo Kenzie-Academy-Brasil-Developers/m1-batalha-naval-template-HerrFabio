@@ -20,16 +20,19 @@ function allocateShips(shipPositions, initialBoard) {
 }
 
 function checkGuesses(guesses, mountedBoard) {
-  for (const guess of guesses) {
-    const [row, col] = guess;
-    if (row >= 0 && row < mountedBoard.length && col >= 0 && col < mountedBoard[0].length) {
-      if (mountedBoard[row][col] === "S") {
-        mountedBoard[row][col] = "X";
-      }
+  for (let i = 0; i < guesses.length; i++) {
+    const guess = guesses[i];
+    const row = guess[0];
+    const col = guess[1];
+
+    if (mountedBoard[row][col] === "S") {
+      mountedBoard[row][col] = "X";
     }
   }
   return mountedBoard;
+
 }
+
 
 function checkWinCondition(guessedBoard) {
   for (let row = 0; row < guessedBoard.length; row++) {
